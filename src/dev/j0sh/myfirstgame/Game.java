@@ -7,6 +7,8 @@ import java.awt.image.BufferedImage;
 
 import dev.j0sh.myfirstgame.display.Display;
 import dev.j0sh.myfirstgame.gfx.ImageLoader;
+import dev.j0sh.myfirstgame.gfx.SpriteSheet;
+import dev.j0sh.myfirstgame.gfx.Assets;
 
 public class Game implements Runnable {
 
@@ -18,9 +20,10 @@ public class Game implements Runnable {
 	private boolean running = false;
 	private BufferStrategy bs;
 	private Graphics g;
-	private BufferedImage character;
+
 
 	public synchronized void start() {
+
 		running = true;
 		startingThread = new Thread(this);
 		startingThread.start();
@@ -41,7 +44,6 @@ public class Game implements Runnable {
 	// init is used to create display window(new object of the Display class)
 	private void init() {
 		display = new Display(title, width, height);
-		character = ImageLoader.loadImage("/textures/fire_demon_walk.gif");
 	}
 
 	private void tick() {
@@ -57,7 +59,7 @@ public class Game implements Runnable {
 		g.clearRect(0, 0, width, height);
 		//draw here
 		g.fillRect(0, 0, width, height);
-		g.drawImage(character, 20, 20, null);
+		g.drawImage(null, 100, 190, null);
 		
 		//end drawing
 		bs.show();
